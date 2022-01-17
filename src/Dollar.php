@@ -22,10 +22,10 @@ class Dollar
 
     /**
      * @param int $multiplier
-     * @return void
+     * @return self
      */
-    public function times(int $multiplier): void
+    public function times(int $multiplier): self
     {
-        $this->amount = $this->amount * $multiplier;
+        return new self($this->amount * $multiplier);
     }
 }
