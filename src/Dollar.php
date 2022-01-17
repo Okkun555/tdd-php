@@ -28,4 +28,13 @@ class Dollar
     {
         return new self($this->amount * $multiplier);
     }
+
+    /**
+     * @param Dollar $dollar
+     * @return bool
+     */
+    public function equals(self $dollar): bool
+    {
+        return $dollar->getAmount() === $this->amount;
+    }
 }
