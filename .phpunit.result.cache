@@ -1,1 +1,0 @@
-{"version":1,"defects":{"Vendor\\App\\MoneyTest::testMultiplication":4,"Vendor\\App\\MoneyTest::testEquality":3},"times":{"Vendor\\App\\GreetTest::testMultiple":0.004,"Vendor\\App\\MoneyTest::testMultiplication":0.028,"Vendor\\App\\MoneyTest::testEquality":0.002}}
