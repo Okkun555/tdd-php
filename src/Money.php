@@ -15,6 +15,7 @@ class Money
      */
     public function equals(self $otherMoney): bool
     {
-        return $this->amount === $otherMoney->amount;
+        return $this->amount === $otherMoney->amount
+            && get_class($this) === get_class($otherMoney);
     }
 }
