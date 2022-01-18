@@ -24,7 +24,7 @@ class Dollar extends Money
      * @param int $multiplier
      * @return self
      */
-    public function times(int $multiplier): self
+    public function times(int $multiplier): Money
     {
         return new self($this->amount * $multiplier);
     }
