@@ -2,11 +2,11 @@
 
 namespace Vendor\App;
 
-class Dollar
+class Dollar extends Money
 {
-    /** @var int */
-    private int $amount;
-
+    /**
+     * @param int $amount
+     */
     public function __construct(int $amount)
     {
         $this->amount = $amount;
@@ -27,14 +27,5 @@ class Dollar
     public function times(int $multiplier): self
     {
         return new self($this->amount * $multiplier);
-    }
-
-    /**
-     * @param Dollar $dollar
-     * @return bool
-     */
-    public function equals(self $dollar): bool
-    {
-        return $dollar->getAmount() === $this->amount;
     }
 }
