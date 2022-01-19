@@ -2,7 +2,7 @@
 
 namespace Vendor\App;
 
-abstract class Money
+class Money
 {
     /**
      * @var int
@@ -46,23 +46,29 @@ abstract class Money
     }
 
     /**
+     * @param int $multiplier
+     * @return $this
+     */
+    public function times(int $multiplier): Money
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
+    }
+
+    /**
      * @param Money $otherMoney
      * @return bool
      */
     public function equals(self $otherMoney): bool
     {
         return $this->amount === $otherMoney->amount
-            && get_class($this) === get_class($otherMoney);
+            && $this->currency === $otherMoney->currency();
     }
-
-    /**
-     * @param int $multiplier
-     * @return mixed
-     */
-    abstract public function times(int $multiplier);
 
     /**
      * @return string
      */
-    abstract public function currency(): string;
+    public function currency(): string
+    {
+        return $this->currency;
+    }
 }
