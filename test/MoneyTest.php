@@ -13,8 +13,9 @@ class MoneyTest extends TestCase
     {
         $five = Money::dollar(5);
 
-        $this->assertEquals(Money::dollar(10), $five->times(2));
-        $this->assertEquals(Money::dollar(15), $five->times(3));
+        // オブジェクトは不変にしたいので比較の仕方をequalsメソッドを利用する形で表現
+        $this->assertTrue(Money::dollar(10)->equals($five->times(2)));
+        $this->assertTrue(Money::dollar(15)->equals($five->times(3)));
     }
 
     /**
@@ -41,5 +42,14 @@ class MoneyTest extends TestCase
 
         $this->assertEquals("USD", Money::dollar(1)->currency());
         $this->assertEquals("CHF", Money::franc(1)->currency());
+    }
+
+    /**
+     * @test
+     */
+    public function testDifferentClassEquality()
+    {
+        $money = new Money(10, 'CHF');
+        $this->assertTrue($money->equals(new Franc(10, 'CHF')));
     }
 }
