@@ -5,14 +5,6 @@ namespace Vendor\App;
 class Dollar extends Money
 {
     /**
-     * @param int $amount
-     */
-    public function __construct(int $amount)
-    {
-        $this->amount = $amount;
-    }
-
-    /**
      * @return int
      */
     public function getAmount(): int
@@ -26,6 +18,14 @@ class Dollar extends Money
      */
     public function times(int $multiplier): Money
     {
-        return new self($this->amount * $multiplier);
+        return Money::dollar($this->amount * $multiplier);
+    }
+
+    /**
+     * @return string
+     */
+    public function currency(): string
+    {
+        return $this->currency;
     }
 }
