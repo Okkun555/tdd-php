@@ -10,13 +10,29 @@ abstract class Money
     protected int $amount;
 
     /**
+     * @var string
+     */
+    protected string $currency;
+
+    /**
+     * @param int $amount
+     * @param string $currency
+     */
+    public function __construct(int $amount, string $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
+    /**
      * Dollarクラスのファクトリメソッド
      * @param int $amount
      * @return Dollar
      */
     public static function dollar(int $amount): Dollar
     {
-        return new Dollar($amount);
+        return new Dollar($amount, "USD");
+
     }
 
     /**
@@ -26,7 +42,7 @@ abstract class Money
      */
     public static function franc(int $amount): Franc
     {
-        return new Franc($amount);
+        return new Franc($amount, "CHF");
     }
 
     /**
@@ -39,5 +55,14 @@ abstract class Money
             && get_class($this) === get_class($otherMoney);
     }
 
+    /**
+     * @param int $multiplier
+     * @return mixed
+     */
     abstract public function times(int $multiplier);
+
+    /**
+     * @return string
+     */
+    abstract public function currency(): string;
 }

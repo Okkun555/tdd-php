@@ -4,13 +4,6 @@ namespace Vendor\App;
 
 class Franc extends Money
 {
-    /**
-     * @param int $amount
-     */
-    public function __construct(int $amount)
-    {
-        $this->amount = $amount;
-    }
 
     /**
      * @return int
@@ -26,6 +19,14 @@ class Franc extends Money
      */
     public function times(int $multiplier): Money
     {
-        return new self($this->amount * $multiplier);
+        return Money::franc($this->amount * $multiplier);
+    }
+
+    /**
+     * @return string
+     */
+    public function currency(): string
+    {
+        return $this->currency;
     }
 }
