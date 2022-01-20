@@ -2,7 +2,7 @@
 
 namespace Vendor\App;
 
-class Money
+class Money implements Expression
 {
     /**
      * @var int
@@ -71,4 +71,14 @@ class Money
     {
         return $this->currency;
     }
+
+    /**
+     * @param Money $added
+     * @return Expression
+     */
+    public function plus(Money $added): Expression
+    {
+        return new self($this->amount + $added->amount, $this->currency);
+    }
+
 }
